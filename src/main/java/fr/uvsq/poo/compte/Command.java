@@ -1,2 +1,6 @@
-package fr.uvsq.poo.compte;public interface Command {
+package fr.uvsq.poo.compte;
+
+@FunctionalInterface
+public interface Command {
+    public void apply();
 }

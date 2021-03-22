@@ -18,10 +18,14 @@ public class Interpreter {
     }
 
     public void executeCommand(String name){
+
+
         if (this.commands.containsKey(name)){
             this.commands.get(name).apply();
-        }
+        }else System.out.println("command not supported !!!");
     }
+
+
 
     public static Interpreter init(){
         Interpreter cf = new Interpreter();
