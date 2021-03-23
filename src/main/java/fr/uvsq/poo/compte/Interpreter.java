@@ -1,40 +1,39 @@
 package fr.uvsq.poo.compte;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Hashtable;
+import java.util.Scanner;
 import java.util.Stack;
 
 public class Interpreter {
-    private final Map<String, Command> commands;
-    Stack<Integer> Operands;
+    protected Stack<Command> history = new Stack<>();
+    protected Stack<Integer> operands = new Stack<>();
+    protected Hashtable<String, Command> set = new Hashtable<>();
 
-    public Interpreter() {
-        this.commands = new HashMap<>();
-        Operands = new Stack<>();
+    public void session(){
+        Scanner s = new Scanner(System.in);
+        while (true){
+            Command command = getNewCommand(s.nextLine());
+            if (command instanceof Quit){
+                System.out.println("quiting");
+                return;
+            }else {
+                if (command != null)
+                command.execute();
+            }
+        }
     }
 
-    public void addCommand(String name, Command command){
-        this.commands.put(name, command);
-    }
+    public Command getNewCommand(String input){
+        try {
+            operands.push(Integer.parseInt(input));
+            return null;
+        }catch (Exception e){
+            if (! set.containsKey(input)){
+                System.out.println("not valid command");
+                return null;
 
-    public void executeCommand(String name){
+            }else return set.get(input);
+        }
 
-
-        if (this.commands.containsKey(name)){
-            this.commands.get(name).apply();
-        }else System.out.println("command not supported !!!");
-    }
-
-
-
-    public static Interpreter init(){
-        Interpreter cf = new Interpreter();
-        cf.addCommand("undo", () -> {
-            cf.Operands.pop();
-        });
-        cf.addCommand("exit", () -> {
-            System.exit(0);
-        });
-        return cf;
     }
 }
