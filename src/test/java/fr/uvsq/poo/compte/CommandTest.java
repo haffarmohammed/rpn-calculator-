@@ -17,6 +17,20 @@ public class CommandTest {
     }
 
     @Test
+    public void testAddNumbers(){
+        ByteArrayInputStream in = new ByteArrayInputStream("5\n6\n+\nquit".getBytes());
+        System.setIn(in);
+        moteurRPN.session();
+    }
+
+    @Test
+    public void testMinusNumbers(){
+        ByteArrayInputStream in = new ByteArrayInputStream("8\n4\n-\nquit".getBytes());
+        System.setIn(in);
+        moteurRPN.session();
+    }
+
+    @Test
     public void testUndo(){
         ByteArrayInputStream in = new ByteArrayInputStream("undo\nquit".getBytes());
         System.setIn(in);

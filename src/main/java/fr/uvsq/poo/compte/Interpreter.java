@@ -26,7 +26,6 @@ public class Interpreter {
     public Command getNewCommand(String input){
         try {
             operands.push(Integer.parseInt(input));
-            afficher();
             return null;
         }catch (Exception e){
             if (! set.containsKey(input)){
@@ -34,6 +33,8 @@ public class Interpreter {
                 return null;
 
             }else return set.get(input);
+        }finally {
+            afficher();
         }
 
     }

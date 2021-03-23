@@ -2,10 +2,10 @@ package fr.uvsq.poo.compte;
 
 import java.util.Stack;
 
-public class Add extends Command{
+public class Plus extends Command{
     Interpreter interpreter;
 
-    public Add(Interpreter interpreter){
+    public Plus(Interpreter interpreter){
         this.interpreter = interpreter;
     }
 
