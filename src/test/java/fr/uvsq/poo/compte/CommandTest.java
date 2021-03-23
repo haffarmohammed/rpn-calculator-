@@ -6,14 +6,21 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
 public class CommandTest {
-    Calculator calculator = new Calculator();
+    MoteurRPN moteurRPN = new MoteurRPN();
     InputStream sysInBackup = System.in; // backup System.in to restore it later
+
+    @Test
+    public void testEnteringNumber(){
+        ByteArrayInputStream in = new ByteArrayInputStream("5\n6\nquit".getBytes());
+        System.setIn(in);
+        moteurRPN.session();
+    }
 
     @Test
     public void testUndo(){
         ByteArrayInputStream in = new ByteArrayInputStream("undo\nquit".getBytes());
         System.setIn(in);
-        calculator.session();
+        moteurRPN.session();
     }
 
     @Test
@@ -21,7 +28,7 @@ public class CommandTest {
         InputStream sysInBackup = System.in; // backup System.in to restore it later
         ByteArrayInputStream in = new ByteArrayInputStream("quit".getBytes());
         System.setIn(in);
-        calculator.session();
+        moteurRPN.session();
     }
 
 }

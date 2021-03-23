@@ -11,8 +11,4 @@ public class Quit extends Command{
 
     }
 
-    @Override
-    public Command clone() {
-        return this;
-    }
 }

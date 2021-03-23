@@ -13,19 +13,20 @@ public class Interpreter {
         Scanner s = new Scanner(System.in);
         while (true){
             Command command = getNewCommand(s.nextLine());
-            if (command instanceof Quit){
-                System.out.println("quiting");
-                return;
-            }else {
-                if (command != null)
-                command.execute();
-            }
+            if (command != null)
+                if (command instanceof Quit){
+                    System.out.println("quiting");
+                    return;
+                }else {
+                    command.execute();
+                }
         }
     }
 
     public Command getNewCommand(String input){
         try {
             operands.push(Integer.parseInt(input));
+            afficher();
             return null;
         }catch (Exception e){
             if (! set.containsKey(input)){
@@ -35,5 +36,9 @@ public class Interpreter {
             }else return set.get(input);
         }
 
+    }
+
+    public void afficher(){
+        System.out.println(operands.toString());
     }
 }

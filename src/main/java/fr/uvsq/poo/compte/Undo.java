@@ -11,17 +11,12 @@ public class Undo  extends Command{
 
     @Override
     public void execute() {
-        if (history.empty()) System.out.println("history is empty");
+        if (history.empty()) System.out.println("There is no previous operation");
         else ((Command)history.firstElement()).undo();
     }
 
     @Override
     public void undo() {
 
-    }
-
-    @Override
-    public Command clone() {
-        return this;
     }
 }
