@@ -11,7 +11,8 @@ public class Undo  extends Command{
 
     @Override
     public void execute() {
-        ((Command)history.firstElement()).undo();
+        if (history.empty()) System.out.println("history is empty");
+        else ((Command)history.firstElement()).undo();
     }
 
     @Override
