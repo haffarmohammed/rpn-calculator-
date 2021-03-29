@@ -53,4 +53,11 @@ public class InterpreterTest {
         moteurRPN.session();
     }
 
+    @Test
+    public void DivideTest(){
+        ByteArrayInputStream Stream = new ByteArrayInputStream("30\n6\n/\nQuit".getBytes());
+        System.setIn(Stream);
+        moteurRPN.session();
+    }
+
 }
