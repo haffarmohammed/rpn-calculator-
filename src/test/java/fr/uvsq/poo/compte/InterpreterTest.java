@@ -46,4 +46,11 @@ public class InterpreterTest {
         moteurRPN.session();
     }
 
+    @Test
+    public void MultiplyTest(){
+        ByteArrayInputStream Stream = new ByteArrayInputStream("5\n6\n*\nQuit".getBytes());
+        System.setIn(Stream);
+        moteurRPN.session();
+    }
+
 }

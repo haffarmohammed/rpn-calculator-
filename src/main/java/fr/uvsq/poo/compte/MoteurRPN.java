@@ -6,6 +6,7 @@ public class MoteurRPN extends Interpreter{
         Commands.put("Undo", new Undo(history));
         Commands.put("+", new Add(this));
         Commands.put("-", new Subtract(this));
+        Commands.put("*", new Multiply(this));
 
     }
 }
