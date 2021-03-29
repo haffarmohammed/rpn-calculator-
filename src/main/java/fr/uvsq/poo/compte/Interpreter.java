@@ -27,6 +27,10 @@ public class Interpreter {
     }
 
 
+    public void Afficher (){
+        System.out.println(Operands.toString());
+    }
+
     protected Command getNewCommand(String Input) {
 
         try {
@@ -43,7 +47,7 @@ public class Interpreter {
         }
 
         finally {
-            System.out.println(Operands.toString());
+            Afficher();
         }
     }
 
