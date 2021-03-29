@@ -1,5 +1,4 @@
 package fr.uvsq.poo.compte;
-
 import java.util.Hashtable;
 import java.util.Scanner;
 import java.util.Stack;
@@ -31,12 +30,10 @@ public class Interpreter {
             if (! set.containsKey(input)){
                 System.out.println("not valid command");
                 return null;
-
             }else return set.get(input);
         }finally {
             afficher();
         }
-
     }
 
     public void afficher(){

@@ -17,6 +17,21 @@ public class CommandTest {
     }
 
     @Test
+    public void testUndo(){
+        ByteArrayInputStream in = new ByteArrayInputStream("undo\nquit".getBytes());
+        System.setIn(in);
+        moteurRPN.session();
+    }
+
+    @Test
+    public void testQuit(){
+        InputStream sysInBackup = System.in; // backup System.in to restore it later
+        ByteArrayInputStream in = new ByteArrayInputStream("quit".getBytes());
+        System.setIn(in);
+        moteurRPN.session();
+    }
+
+    @Test
     public void testAddNumbers(){
         ByteArrayInputStream in = new ByteArrayInputStream("5\n6\n+\nquit".getBytes());
         System.setIn(in);
@@ -31,16 +46,8 @@ public class CommandTest {
     }
 
     @Test
-    public void testUndo(){
-        ByteArrayInputStream in = new ByteArrayInputStream("undo\nquit".getBytes());
-        System.setIn(in);
-        moteurRPN.session();
-    }
-
-    @Test
-    public void testQuit(){
-        InputStream sysInBackup = System.in; // backup System.in to restore it later
-        ByteArrayInputStream in = new ByteArrayInputStream("quit".getBytes());
+    public void testMulNumbers(){
+        ByteArrayInputStream in = new ByteArrayInputStream("8\n4\n*\nquit".getBytes());
         System.setIn(in);
         moteurRPN.session();
     }
