@@ -9,13 +9,17 @@ public class Divide extends Command{
     }
     @Override
     public void apply() {
-        int first = interpreter.Operands.pop();
-        interpreter.Operands.push(interpreter.Operands.pop()/first);
+        this.operant=interpreter.Operands.pop();
+        interpreter.Operands.push(interpreter.Operands.pop()/this.operant);
+        interpreter.history.push(this);
         interpreter.Afficher();
     }
 
     @Override
     public void undo() {
-
+        int rst = interpreter.Operands.pop();
+        interpreter.Operands.push(rst*this.operant);
+        interpreter.Operands.push(this.operant);
+        interpreter.history.pop();
     }
 }

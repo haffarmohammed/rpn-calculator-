@@ -74,4 +74,11 @@ public class InterpreterTest {
         moteurRPN.session();
     }
 
+    @Test
+    public void UndoDivideTest(){
+        ByteArrayInputStream Stream = new ByteArrayInputStream("30\n6\n/\nUndo\nUndo\nQuit".getBytes());
+        System.setIn(Stream);
+        moteurRPN.session();
+    }
+
 }
