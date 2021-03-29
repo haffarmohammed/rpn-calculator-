@@ -52,4 +52,11 @@ public class CommandTest {
         moteurRPN.session();
     }
 
+    @Test
+    public void testDivNumbers(){
+        ByteArrayInputStream in = new ByteArrayInputStream("8\n4\n/\nquit".getBytes());
+        System.setIn(in);
+        moteurRPN.session();
+    }
+
 }
