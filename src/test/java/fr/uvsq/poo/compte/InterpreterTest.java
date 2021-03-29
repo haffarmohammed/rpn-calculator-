@@ -25,5 +25,12 @@ public class InterpreterTest {
         moteurRPN.session();
     }
 
+    @Test
+    public void NumberTest(){
+        ByteArrayInputStream Stream = new ByteArrayInputStream("5\n6\nQuit".getBytes());
+        System.setIn(Stream);
+        moteurRPN.session();
+    }
+
 
 }
