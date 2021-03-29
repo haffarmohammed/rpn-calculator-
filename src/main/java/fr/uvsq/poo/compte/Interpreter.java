@@ -31,11 +31,24 @@ public class Interpreter {
         System.out.println(Operands.toString());
     }
 
+
+    public static boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            double d = Double.parseDouble(strNum);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
+
     protected Command getNewCommand(String Input) {
 
         try {
             Operands.push(Integer.parseInt(Input));
-            return null;
+            return getNewCommand("َAccept");
         } catch (Exception e) {
             if (! Commands.containsKey(Input)){
                 System.out.println("Command not valid");
@@ -46,7 +59,10 @@ public class Interpreter {
             }
         }
 
-        finally {
+
+
+
+       finally {
             Afficher();
         }
     }

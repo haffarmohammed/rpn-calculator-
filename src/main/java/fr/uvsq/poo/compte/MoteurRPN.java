@@ -8,6 +8,7 @@ public class MoteurRPN extends Interpreter{
         Commands.put("-", new Subtract(this));
         Commands.put("*", new Multiply(this));
         Commands.put("/", new Divide(this));
+        Commands.put("Accept", new Divide(this));
 
     }
 }
