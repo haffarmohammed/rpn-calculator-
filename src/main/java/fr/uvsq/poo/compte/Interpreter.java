@@ -3,7 +3,7 @@ package fr.uvsq.poo.compte;
 import java.util.*;
 
 public class Interpreter {
-    protected Stack history = new Stack();
+    protected Stack<Command> history = new Stack<>();
     protected Stack<Integer> Operands = new Stack<>();
     protected Hashtable<String, Command> Commands = new Hashtable<>();
 
