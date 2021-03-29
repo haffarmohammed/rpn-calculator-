@@ -32,29 +32,19 @@ public class Interpreter {
     }
 
 
-    public static boolean isNumeric(String strNum) {
-        if (strNum == null) {
-            return false;
-        }
-        try {
-            double d = Double.parseDouble(strNum);
-        } catch (NumberFormatException nfe) {
-            return false;
-        }
-        return true;
-    }
-
     protected Command getNewCommand(String Input) {
 
         try {
             Operands.push(Integer.parseInt(Input));
-            return getNewCommand("َAccept");
+            Command Accept = getNewCommand("Accept");
+            return Accept;
         } catch (Exception e) {
             if (! Commands.containsKey(Input)){
                 System.out.println("Command not valid");
                 return null;
             }
             else{
+                Afficher();
                 return Commands.get(Input);
             }
         }
@@ -62,9 +52,9 @@ public class Interpreter {
 
 
 
-       finally {
+/*       finally {
             Afficher();
-        }
+        }*/
     }
 
     }

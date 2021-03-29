@@ -88,4 +88,11 @@ public class InterpreterTest {
         moteurRPN.session();
     }
 
+    @Test
+    public void UndoAcceptTest(){
+        ByteArrayInputStream Stream = new ByteArrayInputStream("5\nUndo\nUndo\nQuit".getBytes());
+        System.setIn(Stream);
+        moteurRPN.session();
+    }
+
 }
