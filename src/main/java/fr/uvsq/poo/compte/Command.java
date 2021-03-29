@@ -1,6 +1,8 @@
 package fr.uvsq.poo.compte;
 
-@FunctionalInterface
-public interface Command {
-    public void apply();
+
+abstract class Command implements Cloneable {
+    public abstract void apply();
+    public abstract void undo();
+    //public abstract Command clone();
 }
