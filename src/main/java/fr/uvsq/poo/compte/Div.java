@@ -9,13 +9,17 @@ public class Div extends Command{
 
     @Override
     public void execute() {
-        int op = interpreter.operands.pop();
-        interpreter.operands.push(interpreter.operands.pop() / op);
+        this.operand = interpreter.operands.pop();
+        interpreter.operands.push(interpreter.operands.pop() / this.operand);
+        interpreter.history.push(this);
         interpreter.afficher();
     }
 
     @Override
     public void undo() {
-
+        int quot = interpreter.operands.pop();
+        interpreter.operands.push(quot * this.operand);
+        interpreter.operands.push(this.operand);
+        interpreter.history.pop();
     }
 }

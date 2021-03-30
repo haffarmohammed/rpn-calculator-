@@ -80,4 +80,11 @@ public class CommandTest {
         moteurRPN.session();
     }
 
+    @Test
+    public void testUndoDivNumbers(){
+        ByteArrayInputStream in = new ByteArrayInputStream("30\n6\n/\nundo\nundo\nquit".getBytes());
+        System.setIn(in);
+        moteurRPN.session();
+    }
+
 }
