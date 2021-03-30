@@ -6,6 +6,7 @@ public class MoteurRPN extends Interpreter {
         set.put("-", new Min(this));
         set.put("*", new Mul(this));
         set.put("/", new Div(this));
+        set.put("Accept", new Accept(this));
         set.put("quit", new Quit());
         set.put("undo", new Undo(history));
 

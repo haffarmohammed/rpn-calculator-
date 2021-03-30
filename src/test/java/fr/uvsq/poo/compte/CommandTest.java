@@ -17,6 +17,13 @@ public class CommandTest {
     }
 
     @Test
+    public void testUndoEnteringNumber(){
+        ByteArrayInputStream in = new ByteArrayInputStream("5\n6\nundo\nundo\nundo\nquit".getBytes());
+        System.setIn(in);
+        moteurRPN.session();
+    }
+
+    @Test
     public void testUndo(){
         ByteArrayInputStream in = new ByteArrayInputStream("undo\nquit".getBytes());
         System.setIn(in);
