@@ -61,14 +61,21 @@ public class CommandTest {
 
     @Test
     public void testUndoAddNumbers(){
-        ByteArrayInputStream in = new ByteArrayInputStream("5\n6\n+\nundo\nundo\nundo\nquit".getBytes());
+        ByteArrayInputStream in = new ByteArrayInputStream("5\n6\n+\nundo\nundo\nquit".getBytes());
         System.setIn(in);
         moteurRPN.session();
     }
 
     @Test
     public void testUndoMinusNumbers(){
-        ByteArrayInputStream in = new ByteArrayInputStream("5\n6\n-\nundo\nundo\nundo\nquit".getBytes());
+        ByteArrayInputStream in = new ByteArrayInputStream("5\n6\n*\nundo\nundo\nquit".getBytes());
+        System.setIn(in);
+        moteurRPN.session();
+    }
+
+    @Test
+    public void testUndoMulNumbers(){
+        ByteArrayInputStream in = new ByteArrayInputStream("5\n6\n-\nundo\nundo\nquit".getBytes());
         System.setIn(in);
         moteurRPN.session();
     }
