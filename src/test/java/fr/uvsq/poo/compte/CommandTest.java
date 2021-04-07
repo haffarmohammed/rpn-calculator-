@@ -1,26 +1,31 @@
 package fr.uvsq.poo.compte;
 
+import org.junit.Assert;
 import org.junit.Test;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
+import java.io.*;
+import java.util.Stack;
 
 public class CommandTest {
     MoteurRPN moteurRPN = new MoteurRPN();
-    InputStream sysInBackup = System.in; // backup System.in to restore it later
+    Stack<Integer> O = new Stack<>();
+    Stack<Command> C = new Stack<>();
+
 
     @Test
     public void testEnteringNumber(){
-        ByteArrayInputStream in = new ByteArrayInputStream("5\n6\nquit".getBytes());
-        System.setIn(in);
+        System.setIn(new ByteArrayInputStream("5\n6\nquit".getBytes()));
         moteurRPN.session();
+        O.push(5);O.push(6);
+        Assert.assertEquals(O, moteurRPN.operands);
     }
 
     @Test
     public void testUndoEnteringNumber(){
-        ByteArrayInputStream in = new ByteArrayInputStream("5\n6\nundo\nundo\nundo\nquit".getBytes());
-        System.setIn(in);
+        System.setIn(new ByteArrayInputStream("5\n6\nundo\nundo\nundo\nquit".getBytes()));
         moteurRPN.session();
+        Assert.assertTrue(moteurRPN.operands.isEmpty());
+        Assert.assertTrue(moteurRPN.history.isEmpty());
     }
 
     @Test
