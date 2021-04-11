@@ -32,9 +32,11 @@ public class InterpreterTest {
 
     @Test
     public void NumberTest(){
-        ByteArrayInputStream Stream = new ByteArrayInputStream("5\n6\nQuit".getBytes());
-        System.setIn(Stream);
+        // ByteArrayInputStream Stream = new ByteArrayInputStream("5\n6\nQuit".getBytes());
+        System.setIn(new ByteArrayInputStream("5\n6\nQuit".getBytes()));
+        Oper.push(5);   Oper.push(6);
         moteurRPN.session();
+        Assert.assertEquals(Oper, moteurRPN.Operands);
     }
 
     @Test
