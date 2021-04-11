@@ -105,9 +105,11 @@ public class InterpreterTest {
 
     @Test
     public void UndoMultiplyTest(){
-        ByteArrayInputStream Stream = new ByteArrayInputStream("5\n6\n*\nUndo\nUndo\nQuit".getBytes());
-        System.setIn(Stream);
+        //ByteArrayInputStream Stream = new ByteArrayInputStream("5\n6\n*\nUndo\nUndo\nQuit".getBytes());
+        System.setIn(new ByteArrayInputStream("5\n6\n*\nUndo\nQuit".getBytes()));
         moteurRPN.session();
+        Oper.push(5);  Oper.push(6);
+        Assert.assertEquals(Oper, moteurRPN.Operands);
     }
 
     @Test
