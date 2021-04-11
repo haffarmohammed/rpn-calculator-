@@ -114,9 +114,11 @@ public class InterpreterTest {
 
     @Test
     public void UndoAcceptTest(){
-        ByteArrayInputStream Stream = new ByteArrayInputStream("5\nUndo\nUndo\nQuit".getBytes());
-        System.setIn(Stream);
+        //ByteArrayInputStream Stream = new ByteArrayInputStream("5\nUndo\nUndo\nQuit".getBytes());
+        System.setIn(new ByteArrayInputStream("5\n6\nUndo\nQuit".getBytes()));
         moteurRPN.session();
+        Oper.push(5);
+        Assert.assertEquals(Oper, moteurRPN.Operands);
     }
 
 }
