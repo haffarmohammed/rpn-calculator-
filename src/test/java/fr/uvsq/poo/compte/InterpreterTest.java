@@ -51,9 +51,11 @@ public class InterpreterTest {
 
     @Test
     public void SubtractTest(){
-        ByteArrayInputStream Stream = new ByteArrayInputStream("5\n6\n-\nQuit".getBytes());
-        System.setIn(Stream);
+        //ByteArrayInputStream Stream = new ByteArrayInputStream("5\n6\n-\nQuit".getBytes());
+        System.setIn(new ByteArrayInputStream("5\n6\n-\nQuit".getBytes()));
         moteurRPN.session();
+        Oper.push(-1);
+        Assert.assertEquals(Oper, moteurRPN.Operands);
     }
 
     @Test
