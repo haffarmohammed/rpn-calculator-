@@ -16,7 +16,7 @@ class Undo extends Command {
             System.out.printf("There is no commands\n");
         }
         else{
-            Historique.firstElement().undo();
+            Historique.lastElement().undo();
         }
     }
 
