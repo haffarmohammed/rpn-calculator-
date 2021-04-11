@@ -4,14 +4,12 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 import java.util.Stack;
 
 public class InterpreterTest {
 
 
     MoteurRPN moteurRPN = new MoteurRPN();
-    // InputStream inputStream = System.in;
     Stack<Integer> Oper = new Stack<>();
     Stack<Command> Com = new Stack<>();
 
@@ -19,7 +17,7 @@ public class InterpreterTest {
     public void UndoTest(){
         System.setIn(new ByteArrayInputStream("5\nUndo\nQuit".getBytes()));
         moteurRPN.session();
-        Assert.assertTrue(moteurRPN.Operands.isEmpty());
+        Assert.assertTrue(moteurRPN.operands.isEmpty());
 
     }
 
@@ -36,7 +34,7 @@ public class InterpreterTest {
         System.setIn(new ByteArrayInputStream("5\n6\nQuit".getBytes()));
         Oper.push(5);   Oper.push(6);
         moteurRPN.session();
-        Assert.assertEquals(Oper, moteurRPN.Operands);
+        Assert.assertEquals(Oper, moteurRPN.operands);
     }
 
     @Test
@@ -45,7 +43,7 @@ public class InterpreterTest {
         System.setIn(new ByteArrayInputStream("5\n6\n+\nQuit".getBytes()));
         moteurRPN.session();
         Oper.push (11);
-        Assert.assertEquals(Oper, moteurRPN.Operands);
+        Assert.assertEquals(Oper, moteurRPN.operands);
 
     }
 
@@ -55,7 +53,7 @@ public class InterpreterTest {
         System.setIn(new ByteArrayInputStream("5\n6\n-\nQuit".getBytes()));
         moteurRPN.session();
         Oper.push(-1);
-        Assert.assertEquals(Oper, moteurRPN.Operands);
+        Assert.assertEquals(Oper, moteurRPN.operands);
     }
 
     @Test
@@ -64,7 +62,7 @@ public class InterpreterTest {
         System.setIn(new ByteArrayInputStream("5\n6\n*\nQuit".getBytes()));
         moteurRPN.session();
         Oper.push(30);
-        Assert.assertEquals(Oper, moteurRPN.Operands);
+        Assert.assertEquals(Oper, moteurRPN.operands);
     }
 
     @Test
@@ -73,7 +71,7 @@ public class InterpreterTest {
         System.setIn(new ByteArrayInputStream("30\n6\n/\nQuit".getBytes()));
         moteurRPN.session();
         Oper.push(5);
-        Assert.assertEquals(Oper, moteurRPN.Operands);
+        Assert.assertEquals(Oper, moteurRPN.operands);
     }
 
     @Test
@@ -82,7 +80,7 @@ public class InterpreterTest {
         System.setIn(new ByteArrayInputStream("30\n6\n+\nUndo\nQuit".getBytes()));
         moteurRPN.session();
         Oper.push(30);  Oper.push(6);
-        Assert.assertEquals(Oper, moteurRPN.Operands);
+        Assert.assertEquals(Oper, moteurRPN.operands);
     }
 
     @Test
@@ -91,7 +89,7 @@ public class InterpreterTest {
         System.setIn(new ByteArrayInputStream("30\n6\n-\nUndo\nQuit".getBytes()));
         moteurRPN.session();
         Oper.push(30);  Oper.push(6);
-        Assert.assertEquals(Oper, moteurRPN.Operands);
+        Assert.assertEquals(Oper, moteurRPN.operands);
     }
 
     @Test
@@ -100,7 +98,7 @@ public class InterpreterTest {
         System.setIn(new ByteArrayInputStream("30\n6\n/\nUndo\nQuit".getBytes()));
         moteurRPN.session();
         Oper.push(30);  Oper.push(6);
-        Assert.assertEquals(Oper, moteurRPN.Operands);
+        Assert.assertEquals(Oper, moteurRPN.operands);
     }
 
     @Test
@@ -109,7 +107,7 @@ public class InterpreterTest {
         System.setIn(new ByteArrayInputStream("5\n6\n*\nUndo\nQuit".getBytes()));
         moteurRPN.session();
         Oper.push(5);  Oper.push(6);
-        Assert.assertEquals(Oper, moteurRPN.Operands);
+        Assert.assertEquals(Oper, moteurRPN.operands);
     }
 
     @Test
@@ -118,7 +116,7 @@ public class InterpreterTest {
         System.setIn(new ByteArrayInputStream("5\n6\nUndo\nQuit".getBytes()));
         moteurRPN.session();
         Oper.push(5);
-        Assert.assertEquals(Oper, moteurRPN.Operands);
+        Assert.assertEquals(Oper, moteurRPN.operands);
     }
 
 }
