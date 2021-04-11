@@ -25,8 +25,8 @@ public class InterpreterTest {
 
     @Test
     public void QuitTest(){
-        ByteArrayInputStream Stream = new ByteArrayInputStream("Quit".getBytes());
-        System.setIn(Stream);
+        //  ByteArrayInputStream Stream = new ByteArrayInputStream("Quit".getBytes());
+        System.setIn(new ByteArrayInputStream("Quit".getBytes()));
         moteurRPN.session();
     }
 
