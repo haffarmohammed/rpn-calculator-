@@ -1,9 +1,9 @@
 package fr.uvsq.poo.compte;
 
-public class Plus extends Command{
+public class Add extends Command{
     Interpreter interpreter;
 
-    public Plus(Interpreter interpreter){
+    public Add(Interpreter interpreter){
         this.interpreter = interpreter;
     }
 
@@ -17,8 +17,8 @@ public class Plus extends Command{
 
     @Override
     public void undo() {
-        int som = interpreter.operands.pop();
-        interpreter.operands.push(som - this.operand);
+        int sum = interpreter.operands.pop();
+        interpreter.operands.push(sum - this.operand);
         interpreter.operands.push(this.operand);
         interpreter.history.pop();
     }

@@ -10,7 +10,7 @@ public class Undo  extends Command{
     }
 
     @Override
-    public void execute() {
+    public void apply() {
         if (history.empty()) System.out.println("There is no previous operation");
         else history.lastElement().undo();
     }

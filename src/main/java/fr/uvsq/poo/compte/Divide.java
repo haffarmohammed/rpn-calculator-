@@ -1,9 +1,9 @@
 package fr.uvsq.poo.compte;
 
-public class Div extends Command{
+public class Divide extends Command{
     Interpreter interpreter;
 
-    public Div(Interpreter interpreter){
+    public Divide(Interpreter interpreter){
         this.interpreter = interpreter;
     }
 

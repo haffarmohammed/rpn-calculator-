@@ -6,19 +6,19 @@ import java.util.Stack;
 public class Interpreter {
     protected Stack<Command> history = new Stack<>();
     protected Stack<Integer> operands = new Stack<>();
-    protected Hashtable<String, Command> set = new Hashtable<>();
+    protected Hashtable<String, Command> commands = new Hashtable<>();
     int numEnter;
 
     public void session(){
-        Scanner s = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         while (true){
-            Command command = getNewCommand(s.nextLine());
+            Command command = getNewCommand(sc.nextLine());
             if (command != null)
                 if (command instanceof Quit){
                     System.out.println("quiting");
                     return;
                 }else {
-                    command.execute();
+                    command.apply();
                 }
         }
     }
@@ -29,13 +29,13 @@ public class Interpreter {
             input = "Accept";
         }catch (Exception e){ }
 
-        if (! set.containsKey(input)){
+        if (! commands.containsKey(input)){
             System.out.println("not valid command");
             afficher();
             return null;
         }else {
             afficher();
-            return set.get(input);
+            return commands.get(input);
         }
 
     }

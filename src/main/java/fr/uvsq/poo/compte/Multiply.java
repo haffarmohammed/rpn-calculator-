@@ -1,9 +1,9 @@
 package fr.uvsq.poo.compte;
 
-public class Mul extends Command{
+public class Multiply extends Command{
     Interpreter interpreter;
 
-    public Mul(Interpreter interpreter){
+    public Multiply(Interpreter interpreter){
         this.interpreter = interpreter;
     }
 

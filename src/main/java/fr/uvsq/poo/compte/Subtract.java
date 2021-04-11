@@ -1,9 +1,9 @@
 package fr.uvsq.poo.compte;
 
-public class Min extends Command{
+public class Subtract extends Command{
     Interpreter interpreter;
 
-    public Min(Interpreter interpreter){
+    public Subtract(Interpreter interpreter){
         this.interpreter = interpreter;
     }
 
