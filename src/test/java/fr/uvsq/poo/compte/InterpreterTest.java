@@ -87,9 +87,11 @@ public class InterpreterTest {
 
     @Test
     public void UndoSubtractTest(){
-        ByteArrayInputStream Stream = new ByteArrayInputStream("30\n6\n-\nUndo\nUndo\nQuit".getBytes());
-        System.setIn(Stream);
+        //ByteArrayInputStream Stream = new ByteArrayInputStream("30\n6\n-\nUndo\nUndo\nQuit".getBytes());
+        System.setIn(new ByteArrayInputStream("30\n6\n-\nUndo\nQuit".getBytes()));
         moteurRPN.session();
+        Oper.push(30);  Oper.push(6);
+        Assert.assertEquals(Oper, moteurRPN.Operands);
     }
 
     @Test
