@@ -69,9 +69,11 @@ public class InterpreterTest {
 
     @Test
     public void DivideTest(){
-        ByteArrayInputStream Stream = new ByteArrayInputStream("30\n6\n/\nQuit".getBytes());
-        System.setIn(Stream);
+        // ByteArrayInputStream Stream = new ByteArrayInputStream("30\n6\n/\nQuit".getBytes());
+        System.setIn(new ByteArrayInputStream("30\n6\n/\nQuit".getBytes()));
         moteurRPN.session();
+        Oper.push(5);
+        Assert.assertEquals(Oper, moteurRPN.Operands);
     }
 
     @Test
