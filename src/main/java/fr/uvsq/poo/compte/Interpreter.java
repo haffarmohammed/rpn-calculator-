@@ -6,6 +6,7 @@ public class Interpreter {
     protected Stack<Command> history = new Stack<>();
     protected Stack<Integer> Operands = new Stack<>();
     protected Hashtable<String, Command> Commands = new Hashtable<>();
+    int numEnter;
 
 
     public void session(){
@@ -35,19 +36,22 @@ public class Interpreter {
     protected Command getNewCommand(String Input) {
 
         try {
-            Operands.push(Integer.parseInt(Input));
-            Command Accept = getNewCommand("Accept");
-            return Accept;
+            numEnter = Integer.parseInt(Input);
+            Input = "Accept";
+          //   Command Accept = getNewCommand("Accept");
+          //  return Accept;
         } catch (Exception e) {
+
+        }
             if (! Commands.containsKey(Input)){
                 System.out.println("Command not valid");
+                Afficher();
                 return null;
             }
             else{
                 Afficher();
                 return Commands.get(Input);
             }
-        }
 
 
 

@@ -1,21 +1,26 @@
 package fr.uvsq.poo.compte;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.Stack;
 
 public class InterpreterTest {
 
 
     MoteurRPN moteurRPN = new MoteurRPN();
-    InputStream inputStream = System.in;
+    // InputStream inputStream = System.in;
+    Stack<Integer> Oper = new Stack<>();
+    Stack<Command> Com = new Stack<>();
 
     @Test
     public void UndoTest(){
-        ByteArrayInputStream Stream = new ByteArrayInputStream("Undo".getBytes());
-        System.setIn(Stream);
+        System.setIn(new ByteArrayInputStream("5\nUndo\nQuit".getBytes()));
         moteurRPN.session();
+        Assert.assertTrue(moteurRPN.Operands.isEmpty());
+
     }
 
     @Test

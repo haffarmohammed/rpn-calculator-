@@ -10,6 +10,7 @@ public class Accept extends Command{
     @Override
     public void apply() {
         interpreter.history.push(this);
+        interpreter.Operands.push(interpreter.numEnter);
     }
 
     @Override
